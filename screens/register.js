@@ -127,7 +127,7 @@ const Register = () => {
       <View style={[styles.buttonContainer,{marginTop:20}]}>
 
       <TouchableOpacity  onPress={handleSignup}  style={styles.button}>
-      <Text style={styles.buttonText}>Register</Text>
+      <Text style={styles.buttonText}>Datenschutzerklärung</Text>
 
       </TouchableOpacity>
        
@@ -138,7 +138,7 @@ const Register = () => {
       onPress={()=>navigation.navigate("Login")}
         // onPress={handleSignup}
         style={[styles.button, styles.buttonOutline]}>
-        <Text style={styles.buttonOutlineText}>Login</Text>
+        <Text style={styles.buttonOutlineText}>Anmelden</Text>
       </TouchableOpacity>
       </View>
       </View>
