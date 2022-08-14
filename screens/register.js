@@ -1,18 +1,18 @@
 import {
     KeyboardAvoidingView,
     StyleSheet,
-    Text,
+   
     TextInput,
     TouchableOpacity,
     View,
   } from 'react-native';
   import React ,{useEffect, useState}from 'react';
   // import { Auth } from 'firebase/auth';
-  
+  import CheckBox from '@react-native-community/checkbox';
   import { auth } from '../firebase';
   // import { useNavigation } from '@react-navigation/native';
   import { useNavigation } from '@react-navigation/core';
-  
+  import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 const Register = () => {
     const navigation=useNavigation()
     const [fname,setFname]=useState("")
@@ -21,6 +21,7 @@ const Register = () => {
     const [email,setEmail]=useState("")
     const [pass,setPass]=useState("")
     const [cpass,setCpass]=useState("")
+    const [isSelected, setSelection] = useState(false);
     useEffect(()=>{
      const unsubscribe= auth.onAuthStateChanged(user=>{
         if(user){
@@ -29,6 +30,12 @@ const Register = () => {
       })
       return unsubscribe;
     },[])
+
+    const [visible, setVisible] = React.useState(false);
+
+    const showModal = () => setVisible(true);
+    const hideModal = () => setVisible(false);
+    const containerStyle = {backgroundColor: 'white', padding: 20};
     const handleSignup=()=>{
 
         auth.createUserWithEmailAndPassword(email,pass)
@@ -67,20 +74,29 @@ const Register = () => {
           style={styles.input}
         />
         <TextInput
-          placeholder="password"
+          placeholder="Passwort"
            value={pass}
             onChangeText={text=>{setPass(text)}}
           style={styles.input}
           secureTextEntry
         />
         <TextInput
-          placeholder="password"
+          placeholder="Passwort wiederholen"
            value={cpass}
             onChangeText={text=>{setCpass(text)}}
           style={styles.input}
           secureTextEntry
         />
+        <View style={styles.checkboxContainer}>
+      <CheckBox
+        value={isSelected}
+        onValueChange={setSelection}
+        style={styles.checkbox}
+      />
+      <Text style={styles.label}>Datenschutzerklärung</Text>
+    </View>
       </View>
+      
       
       <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -146,5 +162,21 @@ const styles = StyleSheet.create({
       fontWeight: '700',
       fontSize: 16,
     },
+    maincheckcontainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      },
+    checkboxContainer: {
+        flexDirection: "row",
+        // marginBottom: 20,
+        
+      },
+      checkbox: {
+        alignSelf: "flex-start",
+      },
+      label: {
+        margin: 8,
+      },
   });
   
