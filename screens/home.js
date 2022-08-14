@@ -20,6 +20,38 @@ const Home = () => {
       <Text>{auth.currentUser?.email}</Text>
       <Text>Signout</Text>
       </TouchableOpacity>
+
+
+
+      <TouchableOpacity onPress={()=>navigation.navigate("HomeScreen")}>
+      
+      <Text>HomeScreen</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>navigation.navigate("UnserTeam")}>
+      
+      <Text>Unser Team</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>navigation.navigate("Familien")}>
+      
+      <Text>Familien</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>navigation.navigate("Gesundheit")}>
+      
+      <Text>Gesundheit</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>navigation.navigate("Bildung")}>
+      
+      <Text>Bildung</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>navigation.navigate("Impressum")}>
+      
+      <Text>Impressum</Text>
+      </TouchableOpacity>
     </View>
   )
 }
