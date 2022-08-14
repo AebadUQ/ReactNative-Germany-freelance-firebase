@@ -42,6 +42,7 @@ import Bildung from './screens/Bildung'
 import Gesundheit from './screens/Gesundheit';
 import Impressum from './screens/Impressum'
 import Kontakformular from './screens/Kontakformular'
+import Datenschutzerklarung from './screens/Datenschutzerklarung'
 const App= () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -60,6 +61,15 @@ const App= () => {
       <Stack.Screen name="Bildung" component={Bildung}options={{headerShown:false}} />
       <Stack.Screen name="Gesundheit" component={Gesundheit}options={{headerShown:false}}/>
       <Stack.Screen name="Impressum" component={Impressum} options={{headerShown:false}}/>
+      <Stack.Screen name="Datenschutzerklarung" component={Datenschutzerklarung} options={{
+        title: 'Datenschutzerklarung',
+        headerStyle: {
+          backgroundColor: '#0d6efd',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },}}/>
         <Stack.Screen name="Kontakformular" component={Kontakformular} options={{
           title: 'Kontakformular',
           headerStyle: {
@@ -69,6 +79,8 @@ const App= () => {
           headerTitleStyle: {
             fontWeight: 'bold',
           },}}/>
+          
+          
     </Stack.Navigator>
     
   </NavigationContainer>

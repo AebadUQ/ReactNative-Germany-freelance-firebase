@@ -26,6 +26,7 @@ const Register = () => {
     const [pass,setPass]=useState("")
     const [cpass,setCpass]=useState("")
     const [isSelected, setSelection] = useState(false);
+
     useEffect(()=>{
      const unsubscribe= auth.onAuthStateChanged(user=>{
         if(user){
@@ -41,7 +42,9 @@ const Register = () => {
     const hideModal = () => setVisible(false);
     const containerStyle = {backgroundColor: 'white', padding: 20};
     const handleSignup=()=>{
-
+        
+    if(fname && lname && address && email && pass && cpass && isSelected){
+        // alert("All field filled")
         auth.createUserWithEmailAndPassword(email,pass)
         .then(userCredential=>{
             const user=userCredential.user;
@@ -49,6 +52,11 @@ const Register = () => {
             console.log(email)
         })
         .catch(err=>{alert(err.message)})
+    }
+    else{
+        alert("fill all field")
+    }
+        
     }
   return (
     
@@ -66,7 +74,6 @@ const Register = () => {
           borderWidth: 1,
           marginBottom:20,
         //   borderColor:'red',
-          borderRadius:100
         }}
         source={require('../assets/logo.png')}
         resizeMode="stretch"
@@ -119,7 +126,9 @@ const Register = () => {
         onValueChange={setSelection}
         style={styles.checkbox}
       />
+      <TouchableOpacity onPress={()=>navigation.navigate("Datenschutzerklarung")}>
       <Text style={styles.label}>Datenschutzerklärung</Text>
+      </TouchableOpacity>
     </View>
       </View>
       
@@ -127,8 +136,9 @@ const Register = () => {
       <View style={[styles.buttonContainer,{marginTop:20}]}>
 
       <TouchableOpacity  onPress={handleSignup}  style={styles.button}>
+    
       <Text style={styles.buttonText}>Datenschutzerklärung</Text>
-
+    
       </TouchableOpacity>
        
       </View>
@@ -155,7 +165,7 @@ const styles = StyleSheet.create({
         // padding: 20,
         backgroundColor: '#f3f4f8',
         // marginBottom:20,
-        borderRadius:100
+       
         // borderRadius:'50%'
       },
     container: {
