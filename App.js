@@ -31,6 +31,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/home';
 import Login from './screens/login';
 const Stack = createNativeStackNavigator();
+import Register from './screens/register';
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -46,6 +47,7 @@ const App= () => {
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen options={{headerShown:false}} name="Login" component={Login}/>
+      <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
       <Stack.Screen name="Home" component={Home} />
 
     </Stack.Navigator>

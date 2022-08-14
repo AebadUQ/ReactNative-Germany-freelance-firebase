@@ -49,13 +49,13 @@ const Login = () => {
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="email"
+          placeholder="Benutzername"
            value={email}
             onChangeText={text=>{setEmail(text)}}
           style={styles.input}
         />
         <TextInput
-          placeholder="password"
+          placeholder="Passwort"
            value={pass}
             onChangeText={text=>{setPass(text)}}
           style={styles.input}
@@ -69,9 +69,10 @@ const Login = () => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={handleSignup}
+        onPress={()=>navigation.navigate("Register")}
+          // onPress={handleSignup}
           style={[styles.button, styles.buttonOutline]}>
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text style={styles.buttonOutlineText}>Erstelle einen Account</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
