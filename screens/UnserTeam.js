@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -26,10 +27,39 @@ import {Button} from 'react-native-paper';
 import {Dimensions} from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+import {useNavigation} from '@react-navigation/core';
 
 const App = () => {
+    const navigation = useNavigation();
+
   return (
     <ScrollView>
+    <View
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      height: 60,
+      backgroundColor: '#0d6efd',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <View style={{flex: 1}}>
+      <Text
+        style={{
+          paddingLeft: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'white',
+        }}>
+        Unser Team
+      </Text>
+    </View>
+    <View style={{flex: 1}}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Kontakformular")}>
+      <Text style={{alignSelf:'flex-end',marginRight:10,color:'white',fontWeight:'bold',borderWidth:1,borderColor:'white',padding:10,borderRadius:12}}>Kontakt </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
       <View style={styles.container}>
         <Image
           style={{
@@ -122,6 +152,7 @@ const App = () => {
               Gepr. Betriebswirtin der HWK München Vorstandsvorsitzende
             </Text>
             <Text
+            onPress={()=>navigation.navigate('Kontakformular')}
               style={[
                 styles.description,
                 {color: '#0d6efd', fontWeight: 'bold',marginTop:10},
@@ -151,6 +182,7 @@ const App = () => {
         Vorstandsvertreterin
         </Text>
         <Text
+        onPress={()=>navigation.navigate('Kontakformular')}
           style={[
             styles.description,
             {color: '#0d6efd', fontWeight: 'bold',marginTop:10},

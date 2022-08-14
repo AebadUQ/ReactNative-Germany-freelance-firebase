@@ -8,7 +8,9 @@ import {
   Image,
   useColorScheme,
   View,
+  TouchableOpacity,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 
 import {
   Colors,
@@ -23,8 +25,36 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const App = () => {
+    const navigation = useNavigation();
+
   return (
     <ScrollView>
+    <View
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      height: 60,
+      backgroundColor: '#0d6efd',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <View style={{flex: 1}}>
+      <Text
+        style={{
+          paddingLeft: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'white',
+        }}>
+        Home
+      </Text>
+    </View>
+    <View style={{flex: 1}}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Kontakformular")}>
+      <Text style={{alignSelf:'flex-end',marginRight:10,color:'white',fontWeight:'bold',borderWidth:1,borderColor:'white',padding:10,borderRadius:12}}>Kontakt </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
       <View style={styles.container}>
         <Image
           style={{
@@ -44,7 +74,7 @@ const App = () => {
         </Text>
         <Button
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={() => navigation.navigate("Kontakformular")}
           style={{marginTop: 10, backgroundColor: '#0d6efd',padding:0}}>
           Erfahren Sie mehr
         </Button>
@@ -84,7 +114,7 @@ const App = () => {
           Wir verfügen über Expertise in verschiedenen Bereichen des sozialen
           Lebens und sind daher bestrebt, die richtige Anleitung zu geben:
         </Text>
-        <View style={styles.subcontainer}>
+        <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("UnserTeam")}>
           <Image
             style={{
               alignSelf: 'center',
@@ -99,9 +129,9 @@ const App = () => {
           <Text style={styles.description}>
             Unser Team besteht aus Menschen, denen Sie vertrauen können.
           </Text>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.subcontainer}>
+        <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("Familien")}>
         <Image
           style={{
             alignSelf: 'center',
@@ -117,9 +147,9 @@ const App = () => {
         <Text style={styles.description}>
         Gemeinsam schützen und bauen wir Familie auf.
         </Text>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.subcontainer}>
+      <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("Gesundheit")}>
       <Image
         style={{
           alignSelf: 'center',
@@ -136,9 +166,9 @@ const App = () => {
       Gesundheit ist Reichtum und gemeinsam werden wir ihn schützen.
 
       </Text>
-    </View>
+    </TouchableOpacity>
 
-    <View style={styles.subcontainer}>
+    <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("Bildung")}>
     <Image
       style={{
         alignSelf: 'center',
@@ -155,10 +185,10 @@ const App = () => {
     Ein gebildeter Mensch kann seine Zukunft nach Belieben ändern.
 
     </Text>
-  </View>
+  </TouchableOpacity>
 
 
-  <View style={styles.subcontainer}>
+  <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("Impressum")}>
     <Image
       style={{
         alignSelf: 'center',
@@ -176,9 +206,9 @@ const App = () => {
 
 
     </Text>
-  </View>
+  </TouchableOpacity>
 
-  <View style={styles.subcontainer}>
+  <TouchableOpacity style={styles.subcontainer} onPress={()=>navigation.navigate("Kontakformular")}>
     <Image
       style={{
         alignSelf: 'center',
@@ -195,7 +225,7 @@ const App = () => {
     Möchten Sie mehr erfahren? Kontaktieren Sie uns jetzt.
 
     </Text>
-  </View>
+  </TouchableOpacity>
       </View>
     </ScrollView>
   );

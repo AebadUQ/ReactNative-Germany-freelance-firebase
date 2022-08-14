@@ -8,11 +8,13 @@
 
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -24,6 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -38,6 +41,7 @@ import Familien from './screens/Familien';
 import Bildung from './screens/Bildung'
 import Gesundheit from './screens/Gesundheit';
 import Impressum from './screens/Impressum'
+import Kontakformular from './screens/Kontakformular'
 const App= () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -45,67 +49,27 @@ const App= () => {
   return (
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen options={{headerShown:false}} name="Home" component={Home}/>
+      <Stack.Screen  name="Home" component={Home} options={{headerShown:false}}/>
+      <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
       <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
-        title: 'Home',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}/>
-      <Stack.Screen name="UnserTeam" component={UnserTeam} options={{
-        title: 'Unser Team',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}/>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown:false}}/>
+      <Stack.Screen name="UnserTeam" component={UnserTeam} options={{headerShown:false}}/>
       <Stack.Screen name="Familien" component={Familien} 
-      options={{
-        title: 'Familien',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}/>
-      <Stack.Screen name="Bildung" component={Bildung} options={{
-        title: 'Bildung',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },}} />
-      <Stack.Screen name="Gesundheit" component={Gesundheit} options={{
-        title: 'Gensundheit',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },}}/>
-      <Stack.Screen name="Impressum" component={Impressum} options={{
-        title: 'Impressum',
-        headerStyle: {
-          backgroundColor: '#0d6efd',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },}}/>
+      options={{headerShown:false}}/>
+      <Stack.Screen name="Bildung" component={Bildung}options={{headerShown:false}} />
+      <Stack.Screen name="Gesundheit" component={Gesundheit}options={{headerShown:false}}/>
+      <Stack.Screen name="Impressum" component={Impressum} options={{headerShown:false}}/>
+        <Stack.Screen name="Kontakformular" component={Kontakformular} options={{
+          title: 'Kontakformular',
+          headerStyle: {
+            backgroundColor: '#0d6efd',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },}}/>
     </Stack.Navigator>
+    
   </NavigationContainer>
   );
 };

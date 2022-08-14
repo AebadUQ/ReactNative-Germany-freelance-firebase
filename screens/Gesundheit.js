@@ -29,6 +29,32 @@ const windowHeight = Dimensions.get('window').height;
 const App = () => {
   return (
     <ScrollView>
+    <View
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      height: 60,
+      backgroundColor: '#0d6efd',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <View style={{flex: 1}}>
+      <Text
+        style={{
+          paddingLeft: 10,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'white',
+        }}>
+        Gesundheit
+      </Text>
+    </View>
+    <View style={{flex: 1}}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Kontakformular")}>
+      <Text style={{alignSelf:'flex-end',marginRight:10,color:'white',fontWeight:'bold',borderWidth:1,borderColor:'white',padding:10,borderRadius:12}}>Kontakt </Text>
+      </TouchableOpacity>
+    </View>
+  </View>
       <View style={styles.containerTwo}>
         <Image
           style={{
