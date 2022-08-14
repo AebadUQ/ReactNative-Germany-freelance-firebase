@@ -1,7 +1,8 @@
 import {
     KeyboardAvoidingView,
+    ScrollView,
     StyleSheet,
-   
+   Image,
     TextInput,
     TouchableOpacity,
     View,
@@ -12,6 +13,9 @@ import {
   import { auth } from '../firebase';
   // import { useNavigation } from '@react-navigation/native';
   import { useNavigation } from '@react-navigation/core';
+  import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
   import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 const Register = () => {
     const navigation=useNavigation()
@@ -47,8 +51,30 @@ const Register = () => {
         .catch(err=>{alert(err.message)})
     }
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    
+    // <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <ScrollView>
+   
+    <View style={styles.container}>
+   
+    <View style={[styles.logobox,{alignSelf:'center'}]}>
+      <Image
+        style={{
+          alignSelf: 'center',
+          height: 100,
+          width: 100,
+          borderWidth: 1,
+          marginBottom:20,
+        //   borderColor:'red',
+          borderRadius:100
+        }}
+        source={require('../assets/logo.png')}
+        resizeMode="stretch"
+      />
+     
+    </View>
       <View style={styles.inputContainer}>
+      
         <TextInput
           placeholder="Vorname"
            value={fname}
@@ -98,33 +124,50 @@ const Register = () => {
       </View>
       
       
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-        onPress={handleSignup}
-          // onPress={handleSignup}
-          style={[styles.button, styles.buttonOutline]}>
-          <Text style={styles.buttonOutlineText}>Registers</Text>
-        </TouchableOpacity>
+      <View style={[styles.buttonContainer,{marginTop:20}]}>
+
+      <TouchableOpacity  onPress={handleSignup}  style={styles.button}>
+      <Text style={styles.buttonText}>Register</Text>
+
+      </TouchableOpacity>
+       
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={()=>navigation.navigate("Login")} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+
+      <View style={styles.buttonContainer}  >
+      <TouchableOpacity
+      onPress={()=>navigation.navigate("Login")}
+        // onPress={handleSignup}
+        style={[styles.button, styles.buttonOutline]}>
+        <Text style={styles.buttonOutlineText}>Login</Text>
+      </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+      </View>
+      </ScrollView>
+    // </KeyboardAvoidingView>
   )
 }
 
 export default Register
 
 const styles = StyleSheet.create({
+    logobox: {
+        display: 'flex',
+        // padding: 20,
+        backgroundColor: '#f3f4f8',
+        // marginBottom:20,
+        borderRadius:100
+        // borderRadius:'50%'
+      },
     container: {
-      flex: 1,
+     display:'flex',
       justifyContent: 'center',
       alignItems: 'center',
+   
+      height:windowHeight
     },
     inputContainer: {
       width: '80%',
+     
     },
     input: {
       backgroundColor: 'white',
@@ -134,10 +177,10 @@ const styles = StyleSheet.create({
       marginTop: 5,
     },
     buttonContainer: {
-      width: '60%',
+      width: '80%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 40,
+     
     },
     button: {
       backgroundColor: '#0782f9',
@@ -169,6 +212,7 @@ const styles = StyleSheet.create({
       },
     checkboxContainer: {
         flexDirection: "row",
+        marginTop:10,
         // marginBottom: 20,
         
       },

@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image
 } from 'react-native';
 import React ,{useEffect, useState}from 'react';
 // import { Auth } from 'firebase/auth';
@@ -47,7 +48,21 @@ const Login = () => {
     }
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <View style={styles.logobox}>
+    <Image
+      style={{
+        alignSelf: 'center',
+        height: 100,
+        width: 100,
+        borderWidth: 1,
+      }}
+      source={require('../assets/logo.png')}
+      resizeMode="stretch"
+    />
+   
+  </View>
       <View style={styles.inputContainer}>
+     
         <TextInput
           placeholder="Benutzername"
            value={email}
@@ -62,12 +77,13 @@ const Login = () => {
           secureTextEntry
         />
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={[styles.buttonContainer,{marginTop:20}]}>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Anmelden</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.buttonContainer}>
+      
         <TouchableOpacity
         onPress={()=>navigation.navigate("Register")}
           // onPress={handleSignup}
@@ -75,6 +91,7 @@ const Login = () => {
           <Text style={styles.buttonOutlineText}>Erstelle einen Account</Text>
         </TouchableOpacity>
       </View>
+      
     </KeyboardAvoidingView>
   );
 };
@@ -82,10 +99,20 @@ const Login = () => {
 export default Login;
 
 const styles = StyleSheet.create({
+  logobox: {
+    display: 'flex',
+    padding: 20,
+    backgroundColor: '#f3f4f8',
+    marginBottom:20,
+    borderRadius:100
+    // borderRadius:'50%'
+  },
   container: {
     flex: 1,
+    // marginTop:'20%',
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   inputContainer: {
     width: '80%',
@@ -96,12 +123,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    // borderWidth:1,
+    borderColor:'black'
   },
   buttonContainer: {
-    width: '60%',
+    width: '80%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    // marginTop: 40,
   },
   button: {
     backgroundColor: '#0782f9',
