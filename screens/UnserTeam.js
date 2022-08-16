@@ -294,7 +294,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 15,
     paddingRight:15,
-    paddingBottom:15
+    paddingBottom:15,
+    color:'black'
   },
 });
 export default App;

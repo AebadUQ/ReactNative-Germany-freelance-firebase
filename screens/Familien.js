@@ -310,7 +310,7 @@ const App = () => {
             <View
               style={{display: 'flex', flexDirection: 'row', marginTop: 10}}>
               <FontAwesome5 name={'phone'} size={20} color={'#0d6efd'} solid />
-              <Text style={{paddingLeft: 5, fontWeight: 'bold', fontSize: 15}}>
+              <Text style={{paddingLeft: 5, fontWeight: 'bold', fontSize: 15,color:'#0d6efd'}}>
                 08000 116 016
               </Text>
             </View>
@@ -328,7 +328,7 @@ const App = () => {
             <View
               style={{display: 'flex', flexDirection: 'row', marginTop: 10}}>
               <FontAwesome5 name={'phone'} size={20} color={'#0d6efd'} solid />
-              <Text style={{paddingLeft: 5, fontWeight: 'bold', fontSize: 15}}>
+              <Text style={{paddingLeft: 5, fontWeight: 'bold', fontSize: 15,color:'#0d6efd'}}>
                 {' '}
                 0800 22 55
               </Text>

@@ -3,7 +3,7 @@ import {
     ScrollView,
     StyleSheet,
    Image,
-    TextInput,
+    // TextInput,
     TouchableOpacity,
     View,
   } from 'react-native';
@@ -14,6 +14,7 @@ import {
   // import { useNavigation } from '@react-navigation/native';
   import { useNavigation } from '@react-navigation/core';
   import {Dimensions} from 'react-native';
+  import { TextInput } from 'react-native-paper';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
   import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
@@ -44,14 +45,20 @@ const Register = () => {
     const handleSignup=()=>{
         
     if(fname && lname && address && email && pass && cpass && isSelected){
-        // alert("All field filled")
-        auth.createUserWithEmailAndPassword(email,pass)
-        .then(userCredential=>{
-            const user=userCredential.user;
-            console.log("Registered")
-            console.log(email)
-        })
-        .catch(err=>{alert(err.message)})
+      if(pass !== cpass){
+          alert("password not matched")
+      }
+      else{
+         // alert("All field filled")
+         auth.createUserWithEmailAndPassword(email,pass)
+         .then(userCredential=>{
+             const user=userCredential.user;
+             console.log("Registered")
+             console.log(email)
+         })
+         .catch(err=>{alert(err.message)})
+      }
+       
     }
     else{
         alert("fill all field")
@@ -81,45 +88,72 @@ const Register = () => {
      
     </View>
       <View style={styles.inputContainer}>
-      
-        <TextInput
-          placeholder="Vorname"
-           value={fname}
-            onChangeText={text=>{setFname(text)}}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Nachname"
-           value={lname}
-            onChangeText={text=>{setLname(text)}}
-          style={styles.input}
-        />
-        <TextInput
-        placeholder="email"
-         value={email}
-          onChangeText={text=>{setEmail(text)}}
-        style={styles.input}
-      />
       <TextInput
-          placeholder="Adresse"
-           value={address}
-            onChangeText={text=>{setAddress(text)}}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Passwort"
-           value={pass}
+      style={{marginTop:5}}
+      selectionColor="#0d6efd"
+      activeOutlineColor="#0d6efd"
+      outlineColor="#0d6efd"
+      activeUnderlineColor="#0d6efd"
+      label="Vorname"
+      value={fname}
+            onChangeText={text=>{setFname(text)}}
+    />
+    <TextInput
+    style={{marginTop:5}}
+    selectionColor="#0d6efd"
+    activeOutlineColor="#0d6efd"
+    outlineColor="#0d6efd"
+    activeUnderlineColor="#0d6efd"
+    label="Nachname"
+    value={lname}
+    onChangeText={text=>{setLname(text)}}
+  />
+        
+  <TextInput
+  style={{marginTop:5}}
+  selectionColor="#0d6efd"
+  activeOutlineColor="#0d6efd"
+  outlineColor="#0d6efd"
+  activeUnderlineColor="#0d6efd"
+  label="email"
+  value={email}
+          onChangeText={text=>{setEmail(text)}}
+/>
+    
+<TextInput
+style={{marginTop:5}}
+selectionColor="#0d6efd"
+activeOutlineColor="#0d6efd"
+outlineColor="#0d6efd"
+activeUnderlineColor="#0d6efd"
+label="Adresse"
+value={address}
+onChangeText={text=>{setAddress(text)}}
+/>
+<TextInput
+style={{marginTop:5}}
+selectionColor="#0d6efd"
+activeOutlineColor="#0d6efd"
+outlineColor="#0d6efd"
+activeUnderlineColor="#0d6efd"
+secureTextEntry={true}
+label="Passwort"
+value={pass}
             onChangeText={text=>{setPass(text)}}
-          style={styles.input}
-          secureTextEntry
-        />
-        <TextInput
-          placeholder="Passwort wiederholen"
-           value={cpass}
+/>
+<TextInput
+style={{marginTop:5}}
+selectionColor="#0d6efd"
+secureTextEntry={true}
+activeOutlineColor="#0d6efd"
+outlineColor="#0d6efd"
+activeUnderlineColor="#0d6efd"
+label="Passwort wiederholen"
+value={cpass}
             onChangeText={text=>{setCpass(text)}}
-          style={styles.input}
-          secureTextEntry
-        />
+/>
+        
+       
         <View style={styles.checkboxContainer}>
       <CheckBox
         value={isSelected}

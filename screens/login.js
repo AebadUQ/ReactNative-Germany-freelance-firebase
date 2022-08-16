@@ -2,14 +2,14 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   Text,
-  TextInput,
+  // TextInput,
   TouchableOpacity,
   View,
   Image
 } from 'react-native';
 import React ,{useEffect, useState}from 'react';
 // import { Auth } from 'firebase/auth';
-
+import { TextInput } from 'react-native-paper';
 import { auth } from '../firebase';
 // import { useNavigation } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/core';
@@ -63,19 +63,27 @@ const Login = () => {
   </View>
       <View style={styles.inputContainer}>
      
-        <TextInput
-          placeholder="Benutzername"
-           value={email}
-            onChangeText={text=>{setEmail(text)}}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Passwort"
-           value={pass}
+      <TextInput
+      selectionColor="#0d6efd"
+      activeOutlineColor="#0d6efd"
+      outlineColor="#0d6efd"
+      activeUnderlineColor="#0d6efd"
+      label="Benutzername"
+      value={email}
+      onChangeText={text => setEmail(text)}
+    />
+
+    <TextInput
+    style={{marginTop:5}}
+    selectionColor="#0d6efd"
+    activeOutlineColor="#0d6efd"
+    outlineColor="#0d6efd"
+    activeUnderlineColor="#0d6efd"
+    label="Passwort"
+    value={pass}
             onChangeText={text=>{setPass(text)}}
-          style={styles.input}
-          secureTextEntry
-        />
+  />
+        
       </View>
       <View style={[styles.buttonContainer,{marginTop:20}]}>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
@@ -123,6 +131,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    color:'black',
     // borderWidth:1,
     borderColor:'black'
   },
